@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtGui import QPalette
+from PyQt5.QtGui import QIcon, QPalette
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWidgets import (
     QHBoxLayout,
@@ -7,11 +7,11 @@ from PyQt5.QtWidgets import (
     QLayout,
     QListWidget,
     QListWidgetItem,
+    QSizePolicy,
     QWidget,
 )
 
 from gridplayer.params.languages import Language
-from gridplayer.widgets.video_status import StatusIcon
 
 
 class LanguageRowWidget(QWidget):
@@ -25,10 +25,7 @@ class LanguageRowWidget(QWidget):
         self.icon_flag = self._ui_icon_flag(icon)
         self.text = self._ui_text(text)
 
-        self.icon_checkmark = StatusIcon("checkmark", parent=self)
-        self.icon_checkmark.setFixedSize(
-            self.flag_size.height(), self.flag_size.height()
-        )
+        self.icon_checkmark = self._ui_checkmark()
         self.icon_checkmark.hide()
 
         layout = QHBoxLayout(self)
@@ -67,6 +64,17 @@ class LanguageRowWidget(QWidget):
         text_label.setOpenExternalLinks(True)
 
         return text_label
+
+    def _ui_checkmark(self):
+        size = QSize(self.flag_size.height(), self.flag_size.height())
+
+        icon_checkmark = QLabel(self)
+        icon_checkmark.setPixmap(QIcon.fromTheme("checkmark").pixmap(size))
+        icon_checkmark.setAlignment(Qt.AlignCenter)
+        icon_checkmark.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        icon_checkmark.setFixedSize(size)
+
+        return icon_checkmark
 
 
 class LanguageList(QListWidget):
