@@ -52,6 +52,18 @@ generate-ui:
 generate-resources:
     ./scripts/qt_resources/build_resources.sh
 
+translations-build-main:
+    ./scripts/translations/build_ts.sh
+
+translations-upload-main:
+    ./scripts/translations/upload.sh
+
+translations-download-approved:
+    ./scripts/translations/download.sh
+
+translations-update-contributors:
+    ./scripts/translations/update_contributors.sh
+
 changelog:
     conventional-changelog -p conventionalcommits -u -a --stdout | sed -n '0,/\[0\.1\.0\]:/d; p'
 
