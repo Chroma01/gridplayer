@@ -94,7 +94,7 @@ update_flathub_git() {
     git config user.email "$GIT_EMAIL"
 
     git submodule add https://github.com/flathub/shared-modules || true
-    (cd "$BUILD_DIR_FLATHUB/shared-modules" && git checkout -q 0529b121864669aa14fac1c67b5684a4bc6542b8)
+    (cd "$BUILD_DIR_FLATHUB/shared-modules" && git checkout -q b8236c7961e3dd447b1b9605375a54a12f9f24b6)
 
     git add .
 

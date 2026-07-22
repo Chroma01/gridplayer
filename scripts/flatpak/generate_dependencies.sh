@@ -22,8 +22,9 @@ process_requirements() {
         sed -i "/^$package==/d" "$requirements"
     done
 
-    # 4.9.3 doesnt compile with libxml2 >2.13.9
-    sed -i 's/\(lxml==\)[0-9]\+\(\.[0-9]\+\)*/\15.3.0/g' "$requirements"
+    # temporary fix for poetry glitch
+    sed -i "/^mutagen==/d" "$requirements"
+    echo 'mutagen==1.48.1 ; python_version >= "3.10"' >> "$requirements"
 }
 
 BUILD_DIR_PYTHON_DEPS="$BUILD_DIR/flatpak_python_deps"
@@ -45,16 +46,13 @@ fi
 
 . venv/bin/activate
 
-pip install PyYAML requirements-parser
+pip install PyYAML requirements-parser packaging
 
-#wget -nc -q -O flatpak-pip-generator https://github.com/flatpak/flatpak-builder-tools/raw/master/pip/flatpak-pip-generator.py
+wget -nc -q -O flatpak-pip-generator https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/dda10aa5949811589747e6e485da6ae2e86b5d2b/pip/flatpak-pip-generator.py || [ $? -eq 1 ]
 
-# Noting useful is stored in /share by python modules
-#sed -i "s#module\['cleanup'\] = \['/bin', '/share/man/man1'\]#module\['cleanup'\] = \['/bin', '/share'\]#g" flatpak-pip-generator
+rm -f *.yml
 
-rm -f dependencies.*
-
-python "$SCRIPTS_DIR/flatpak/flatpak-pip-generator.py" --requirements-file="$BUILD_DIR_PYTHON_DEPS/requirements.txt" --yaml --cleanup scripts --output dependencies --use-prebuilt-wheels pydantic_core
+python flatpak-pip-generator --requirements-file="$BUILD_DIR_PYTHON_DEPS/requirements.txt" --yaml --cleanup scripts --output dependencies --prefer-wheels pydantic_core --runtime "org.kde.Sdk//5.15-25.08"
 mv dependencies.yaml dependencies.yml
 
 md5sum "requirements.txt" > "build.md5"
