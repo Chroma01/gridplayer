@@ -89,7 +89,7 @@ jobs:
 
       - name: Build
         run: |
-          just build-macos-package
+          just ${{ matrix.arch == 'arm64' && 'build-macos-package-arm64' || 'build-macos-package' }}
           just clean-pyinstaller-dist
 
       - name: Save release binaries for macos ${{ matrix.arch }}
