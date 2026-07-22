@@ -2,6 +2,7 @@ import sys
 
 from gridplayer.dialogs.messagebox import QCustomMessageBox
 from gridplayer.main.init_app import init_app
+from gridplayer.main.init_icons import init_icon
 from gridplayer.params import env
 from gridplayer.utils.libvlc import init_vlc
 from gridplayer.utils.qt import translate
@@ -35,6 +36,10 @@ def run_app():
 
     player = Player()
     player.show()
+
+    # force load main app icon for Windows 11
+    if env.IS_WINDOWS:
+        init_icon(app)
 
     app.installEventFilter(player)
 
