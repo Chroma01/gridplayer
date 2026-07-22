@@ -6,6 +6,7 @@ from pydantic import BaseModel, ValidationError
 
 from gridplayer.models.grid_state import GridState
 from gridplayer.models.video import Video
+from gridplayer.models.video_uri import parse_uri
 from gridplayer.params.static import SeekSyncMode, WindowState
 from gridplayer.settings import Settings, default_field
 
@@ -96,7 +97,7 @@ class Playlist(BaseModel):
         for idx, uri in enumerate(_parse_video_paths(playlist_in)):
             video_args = video_params.get(idx, {})
 
-            video_args["uri"] = uri
+            video_args["uri"] = parse_uri(uri)
 
             try:
                 videos.append(Video(**video_args))
