@@ -19,8 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Force load app icon to avoid default icon on Windows 11 ([51d0d92](https://github.com/vzhd1701/gridplayer/commit/51d0d92cfe75efdc8a15d16874dd246fee658c57)
 * Restore URI parsing for playlists ([b02b31b](https://github.com/vzhd1701/gridplayer/commit/b02b31bd3be7e0fbaa278dee1d9740835f005635)), closes [#294](https://github.com/vzhd1701/gridplayer/issues/294) [#311](https://github.com/vzhd1701/gridplayer/issues/311)
 * Show error when picking missing local video from recent list ([de03e3b](https://github.com/vzhd1701/gridplayer/commit/de03e3b12969e625acdc35609cbea1c33583de54))
-* Improve file validation when importing from clipboard ([7ca8208](https://github.com/vzhd1701/gridplayer/commit/7ca820875c772e4d3c839c00369d635f8f4cac98)), closes [#296](https://github.com/vzhd1701/gridplayer/issues/296
-* Safeguard playback position updates ([52c706d](https://github.com/vzhd1701/gridplayer/commit/52c706d3c106dc8ae2b50a36ba09a90a581c23c4)), closes [#309](https://github.com/vzhd1701/gridplayer/issues/309
+* Improve file validation when importing from clipboard ([7ca8208](https://github.com/vzhd1701/gridplayer/commit/7ca820875c772e4d3c839c00369d635f8f4cac98)), closes [#296](https://github.com/vzhd1701/gridplayer/issues/296)
+* Safeguard playback position updates ([52c706d](https://github.com/vzhd1701/gridplayer/commit/52c706d3c106dc8ae2b50a36ba09a90a581c23c4)), closes [#309](https://github.com/vzhd1701/gridplayer/issues/309)
 
 ## [0.5.4] - 2025-11-24
 
