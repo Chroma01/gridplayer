@@ -167,12 +167,11 @@ class OverlayBlock(QWidget):
 
     @pyqtSlot(int, int)
     def set_position(self, position, length):
-        position_percent = position / length
+        position = max(0, position)
 
-        position_txt = get_time_txt(position // 1000, length // 1000)
-        length_txt = get_time_txt(length // 1000)
+        if length <= 0:
+            position_txt = get_time_txt(position // 1000)
 
-        if length == -1:
             self.floating_progress.hide()
 
             self.progress_bar.setEnabled(False)
@@ -182,15 +181,21 @@ class OverlayBlock(QWidget):
 
             self.label_progress.text = f"{position_txt}"
             self.label_progress.show()
-        else:
-            self.progress_bar.setEnabled(True)
-            self.progress_bar.show()
 
-            self.progress_bar_placeholder.hide()
+            return
 
-            self.floating_progress.length = length
-            self.label_progress.text = f"{position_txt} / {length_txt}"
-            self.progress_bar.position = position_percent
+        position_percent = position / length
+        position_txt = get_time_txt(position // 1000, length // 1000)
+        length_txt = get_time_txt(length // 1000)
+
+        self.progress_bar.setEnabled(True)
+        self.progress_bar.show()
+
+        self.progress_bar_placeholder.hide()
+
+        self.floating_progress.length = length
+        self.label_progress.text = f"{position_txt} / {length_txt}"
+        self.progress_bar.position = position_percent
 
     @pyqtSlot(float)
     def set_loop_start(self, position):
