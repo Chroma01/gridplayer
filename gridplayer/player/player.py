@@ -128,6 +128,7 @@ class Player(QWidget, ManagersManager):
                 ("videos_added", "video_blocks.add_videos"),
                 ("videos_added", "window_state.activate_window"),
                 ("playlist_opened", "playlist.load_playlist_file"),
+                ("error", "dialogs.error"),
             ],
         }
 
