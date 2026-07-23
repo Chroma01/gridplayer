@@ -13,7 +13,7 @@ if ! check brew; then
     exit 1
 fi
 
-brew install gnu-sed wget node graphicsmagick imagemagick just poetry
+brew install gnu-sed wget node graphicsmagick imagemagick just uv
 
 if ! check create-dmg; then
     npm install --global create-dmg

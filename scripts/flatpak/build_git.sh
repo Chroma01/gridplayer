@@ -116,6 +116,7 @@ generate_flathub_git() {
         "$SCRIPT_DIR/generate_dependencies.sh"
     fi
     cp "$BUILD_DIR/flatpak_python_deps/dependencies.yml" "$BUILD_DIR_FLATHUB/dependencies.yml"
+    cp "$BUILD_DIR/flatpak_python_deps/uv_build.yml" "$BUILD_DIR_FLATPAK/uv_build.yml"
 
     cat "$SCRIPT_DIR/app.yml" "$SCRIPT_DIR/app_git.yml" > "$BUILD_DIR_FLATHUB/$APP_ID.yml"
     replace_app_vars "$BUILD_DIR_FLATHUB/$APP_ID.yml"

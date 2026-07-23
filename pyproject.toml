@@ -1,17 +1,23 @@
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.11.30,<0.12.0"]
+build-backend = "uv_build"
 
 [project]
 name = "gridplayer"
 version = "0.5.4"
 description = "Play videos side-by-side"
-authors = [
-  { name = "vzhd1701", email = "vzhd1701@gmail.com" }
-]
+authors = [{ name = "vzhd1701", email = "vzhd1701@gmail.com" }]
+requires-python = ">=3.10"
 readme = "README.md"
 license = "GPL-3.0-or-later"
-keywords = ["video", "player", "vlc", "pyqt", "Qt5", "multimedia"]
+keywords = [
+    "video",
+    "player",
+    "vlc",
+    "pyqt",
+    "Qt5",
+    "multimedia",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: End Users/Desktop",
@@ -22,7 +28,6 @@ classifiers = [
     "Operating System :: Unix",
     "Topic :: Multimedia :: Video :: Display",
 ]
-requires-python = ">=3.10"
 dependencies = [
     "PyQt5==5.15.11",
     "PyQt5-Qt5==5.15.2 ; sys_platform == 'win32'",
@@ -52,8 +57,8 @@ dev = [
     "ruff (>=0.14.10,<0.15.0)",
 ]
 
-[tool.poetry.group.dev]
-optional = true
+[tool.uv.build-backend]
+module-root = ""
 
 [tool.ruff]
 extend-exclude = ["gridplayer/resources_bin.py", "gridplayer/vlc_player/vlc.py"]

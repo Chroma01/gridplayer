@@ -43,3 +43,4 @@ cleanup:
 modules:
 - libvlc.yml
 - dependencies.yml
+- uv_build.yml

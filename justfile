@@ -2,16 +2,16 @@ default:
     just --list
 
 build-requirements:
-    if [ ! -f build/requirements.txt ]; then mkdir -p build && poetry export --without-hashes -o build/requirements.txt; fi
+    if [ ! -f build/requirements.txt ]; then mkdir -p build && uv pip compile pyproject.toml -q --no-annotate --no-header -o build/requirements.txt; fi
 
 build:
-    poetry build
+    uv build
 
 build-wheel:
-    if [ ! -f dist/*.whl ]; then poetry build -f wheel; fi
+    if [ ! -f dist/*.whl ]; then uv build --wheel; fi
 
 build-sdist:
-    if [ ! -f dist/*.tar.gz ]; then poetry build -f sdist; fi
+    if [ ! -f dist/*.tar.gz ]; then uv build --sdist; fi
 
 build-linux-meta:
     ./scripts/linux_meta/build.sh

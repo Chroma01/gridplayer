@@ -21,10 +21,6 @@ process_requirements() {
     for package in "${packages_del[@]}"; do
         sed -i "/^$package==/d" "$requirements"
     done
-
-    # temporary fix for poetry glitch
-    sed -i "/^mutagen==/d" "$requirements"
-    echo 'mutagen==1.48.1 ; python_version >= "3.10"' >> "$requirements"
 }
 
 BUILD_DIR_PYTHON_DEPS="$BUILD_DIR/flatpak_python_deps"
@@ -54,5 +50,8 @@ rm -f *.yml
 
 python flatpak-pip-generator --requirements-file="$BUILD_DIR_PYTHON_DEPS/requirements.txt" --yaml --cleanup scripts --output dependencies --prefer-wheels pydantic_core --runtime "org.kde.Sdk//5.15-25.08"
 mv dependencies.yaml dependencies.yml
+
+python flatpak-pip-generator --yaml --build-only --output uv_build --prefer-wheels uv_build --runtime "org.kde.Sdk//5.15-25.08" uv_build
+mv uv_build.yaml uv_build.yml
 
 md5sum "requirements.txt" > "build.md5"

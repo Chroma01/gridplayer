@@ -11,9 +11,9 @@ const version_updater_regex = {
   }
 }
 
-let version_updater_poetry = {...version_updater_regex};
-version_updater_poetry.regex = /^version = \"([^\"]+)\"$/m;
-version_updater_poetry.regex_repl = "version = \"$1\"";
+let version_updater_pyproject = {...version_updater_regex};
+version_updater_pyproject.regex = /^version = \"([^\"]+)\"$/m;
+version_updater_pyproject.regex_repl = "version = \"$1\"";
 
 // YYYY-MM-DD
 let today = new Date().toISOString().substring(0, 10);
@@ -31,7 +31,7 @@ version_file = "gridplayer/version.py"
 let packageFiles = [
   {
     filename: "pyproject.toml",
-    updater: version_updater_poetry,
+    updater: version_updater_pyproject,
   }
 ]
 
@@ -56,6 +56,6 @@ module.exports = {
     changelog: true
   },
   scripts: {
-    postbump: `poetry run python scripts/_helpers/kacl.py "${version_file}" CHANGELOG.md && git add CHANGELOG.md`
+    postbump: `uv run scripts/_helpers/kacl.py "${version_file}" CHANGELOG.md && git add CHANGELOG.md`
   }
 }

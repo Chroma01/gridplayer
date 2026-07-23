@@ -8,13 +8,10 @@ on:
 
 env:
   BUILD_PYTHON_VERSION: "3.10"
-  BUILD_POETRY_VERSION: "2.2.1"
 
 jobs:
   build_flatpak:
     runs-on: ubuntu-latest
-    env:
-      POETRY_VIRTUALENVS_CREATE: false
     steps:
       - uses: actions/checkout@v6
       - uses: extractions/setup-just@v3
@@ -24,11 +21,8 @@ jobs:
         with:
           python-version: ${{ env.BUILD_PYTHON_VERSION }}
 
-      - name: Set up Poetry ${{ env.BUILD_POETRY_VERSION }}
-        uses: abatilo/actions-poetry@v4
-        with:
-          poetry-version: ${{ env.BUILD_POETRY_VERSION }}
-          poetry-plugins: "poetry-plugin-export"
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
 
       - name: Install requirements
         run: |

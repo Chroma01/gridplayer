@@ -4,7 +4,7 @@
 
 Dependencies:
 
-- [Poetry](https://python-poetry.org/docs/)
+- [uv](https://docs.astral.sh/uv/)
 - [Just](https://github.com/casey/just) (task runner)
 - [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) (for release workflow)
 - [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
@@ -16,9 +16,8 @@ Dependencies:
 ```bash
 git clone https://github.com/vzhd1701/gridplayer.git
 cd gridplayer
-poetry config virtualenvs.in-project true   # virtualenv in the same directory
-poetry install --with dev
-poetry run gridplayer
+uv sync
+uv run gridplayer
 ```
 
 ## Local build on Windows
