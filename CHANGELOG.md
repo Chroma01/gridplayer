@@ -8,7 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-* Native Apple Silicon (arm64) macOS build support, with arch-aware build scripts and a `BUILD_MACOS_ARCH` override for Intel (`x86_64`) builds
+* Native Apple Silicon (arm64) macOS build support, with arch-aware build scripts and a `BUILD_MACOS_ARCH` override for Intel (`x86_64`) builds ([de4a54a](https://github.com/vzhd1701/gridplayer/commit/de4a54a))
+* Czech, Norwegian, Swedish, Taiwanese, Vietnamese translations ([fd35bf2](https://github.com/vzhd1701/gridplayer/commit/fd35bf2cac5e8f9a222635ad4c09bf043ad71bdf)), ([c52c5de](https://github.com/vzhd1701/gridplayer/commit/c52c5de8ca055f2b22bb108b4ef048a2861f86be)), ([0867eea](https://github.com/vzhd1701/gridplayer/commit/0867eea48a2cbbdb154fb9ca5fe1f1c79fd58767))
+
+### Fixed
+
+* Update translations ([c52c5de](https://github.com/vzhd1701/gridplayer/commit/c52c5de8ca055f2b22bb108b4ef048a2861f86be))
+* Update streamlink and yt-dlp ([8e172e5](https://github.com/vzhd1701/gridplayer/commit/8e172e5))
+* Avoid checkbox shrinking in language select dialog ([d510a80](https://github.com/vzhd1701/gridplayer/commit/d510a809ce76a3d3eff312c4ac01b3b3a7ec4566))
+* Force load app icon to avoid default icon on Windows 11 ([51d0d92](https://github.com/vzhd1701/gridplayer/commit/51d0d92cfe75efdc8a15d16874dd246fee658c57)
+* Restore URI parsing for playlists ([b02b31b](https://github.com/vzhd1701/gridplayer/commit/b02b31bd3be7e0fbaa278dee1d9740835f005635)), closes [#294](https://github.com/vzhd1701/gridplayer/issues/294) [#311](https://github.com/vzhd1701/gridplayer/issues/311)
+* Show error when picking missing local video from recent list ([de03e3b](https://github.com/vzhd1701/gridplayer/commit/de03e3b12969e625acdc35609cbea1c33583de54))
+* Improve file validation when importing from clipboard ([7ca8208](https://github.com/vzhd1701/gridplayer/commit/7ca820875c772e4d3c839c00369d635f8f4cac98)), closes [#296](https://github.com/vzhd1701/gridplayer/issues/296
+* Safeguard playback position updates ([52c706d](https://github.com/vzhd1701/gridplayer/commit/52c706d3c106dc8ae2b50a36ba09a90a581c23c4)), closes [#309](https://github.com/vzhd1701/gridplayer/issues/309
 
 ## [0.5.4] - 2025-11-24
 
